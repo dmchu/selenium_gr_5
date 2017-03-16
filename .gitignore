@@ -88,4 +88,9 @@ ENV/
 # Rope project settings
 .ropeproject
 
-.idea
+# Idea
+.idea/vcs.xml
+.idea/modules.xml
+.idea/selenium_gr_5.iml
+.idea/selenium_gr_5.iml
+.idea/workspace.xml
