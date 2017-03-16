@@ -20,4 +20,3 @@ def test_example(driver):
     driver.find_element_by_name("login").click()
 
     WebDriverWait(driver, 10).until(EC.title_is("My Store"))
-    pass
