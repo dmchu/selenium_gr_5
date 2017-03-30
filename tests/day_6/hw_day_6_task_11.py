@@ -79,14 +79,12 @@ def test_countries_order(driver):
     create_account.find_element(By.NAME, 'create_account').click()
 
     success_create = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".notice.success")))
-    assertTrue(success_create.text == "Your customer account has been created.")
+    assertTrue(success_create.text == "Your customer account has been created.", "account has not been created")
 
 
     account_box = driver.find_element(By.ID, "box-account")
     logout = account_box.find_element(By.LINK_TEXT, "Logout")
     logout.click()
-
-
 
     # Second login
 
@@ -101,7 +99,8 @@ def test_countries_order(driver):
     login.click()
 
     success_login = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".notice.success")))
-    assertTrue(success_login.text == "You are now logged in as {0} {1}.".format(user_details['First Name'], user_details['Last Name']))
+    assertTrue(success_login.text == "You are now logged in as {0} {1}.".format(user_details['First Name'],
+               user_details['Last Name']), "User's full name doesn't much!")
 
     account_box = driver.find_element(By.ID, "box-account")
     logout = account_box.find_element(By.LINK_TEXT, "Logout")
