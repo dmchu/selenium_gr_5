@@ -7,18 +7,18 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from wheel.signatures import assertTrue
 
+
 @pytest.fixture
 def driver(request):
-    wd = webdriver.Chrome()
-    wd.implicitly_wait(2)
-    request.addfinalizer(wd.quit)
-    return wd
+    driver = webdriver.Chrome()
+    driver.implicitly_wait(2)
+    request.addfinalizer(driver.quit)
+    return driver
 
 
-def test_countries_order(driver):
+def test_add_new_account(driver):
     f = Faker()
     wait = WebDriverWait(driver, 5)
-
 
     driver.get("http://localhost/litecart/en/")
 
@@ -40,7 +40,6 @@ def test_countries_order(driver):
     user_details['Password'] = f.password()
 
     create_account = driver.find_element(By.ID, 'create-account')
-
 
     create_account_form = dict.fromkeys(
         ['First Name', 'Last Name', 'Address', 'Postcode', 'City', 'State',
@@ -80,7 +79,6 @@ def test_countries_order(driver):
 
     success_create = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".notice.success")))
     assertTrue(success_create.text == "Your customer account has been created.", "account has not been created")
-
 
     account_box = driver.find_element(By.ID, "box-account")
     logout = account_box.find_element(By.LINK_TEXT, "Logout")

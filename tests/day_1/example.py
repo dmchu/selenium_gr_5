@@ -10,6 +10,7 @@ def driver(request):
     request.addfinalizer(wd.quit)
     return wd
 
+
 def test_example(driver):
 
     driver.get("http://google.com/")
