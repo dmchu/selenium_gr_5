@@ -102,4 +102,3 @@ def test_add_new_product(driver):
     assertTrue(success_message.text == "Changes were successfully saved.")
 
     assertTrue(driver.find_element(By.LINK_TEXT, product_name), "Product not exist")
-

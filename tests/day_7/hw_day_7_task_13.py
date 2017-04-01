@@ -1,5 +1,4 @@
 import pytest
-from faker import Faker
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -18,7 +17,6 @@ def driver(request):
 
 def test_cart(driver):
     wait = WebDriverWait(driver, 5)
-    f = Faker()
     driver.get("http://localhost/litecart/en/")
 
     number_of_products_to_buy = 3
@@ -32,7 +30,6 @@ def test_cart(driver):
         products.append(current_product)
         if len(products) == number_of_products_to_buy: break
 
-    added_to_cart_products =[]
     for product_page in products:
         driver.find_element(By.CSS_SELECTOR, 'a.link[href="{}"]'.format(product_page['link'])).click()
         # verify if the product has size
