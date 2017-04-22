@@ -23,7 +23,7 @@ def test_cart(driver):
 
     main_page.open()
 
-    selected_products = main_page.select_products_to_buy(3)
+    selected_products = main_page.select_products_to_buy(6)
 
     product_page.add_to_cart(selected_products)
 
